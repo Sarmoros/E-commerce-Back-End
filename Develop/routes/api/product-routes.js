@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         { model: Category }, 
         { model: Tag, 
           through: ProductTag, 
-          as: 'product_tags' 
+          as: 'products' 
         }],
     });
     res.status(200).json(productData);

@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       include: [
         { model: Product, 
         through: ProductTag, 
-        as: 'product_tags' }
+        as: 'products' }
       ],
     });
     res.status(200).json(tagData);
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
       include: [
         { model: Product, 
         through: ProductTag, 
-        as: 'product_tags' }
+        as: 'products' }
       ],
     });
     if (!tagData) {
@@ -87,7 +87,7 @@ router.delete('/:id', (req, res) => {
       res.status(404).json({ message: "No tag found with that id"});
       return;
     }
-    res.status(200).json(tagData);
+    res.status(200).json({ message: "Tag deleted successfully"});
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Server Error"});
